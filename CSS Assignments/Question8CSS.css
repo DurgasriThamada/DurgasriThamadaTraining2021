@@ -1,0 +1,17 @@
+p{
+	background-color:cyan;
+}
+.text1{
+	border:8px solid black;
+}
+.text2{
+	border:5px solid black;
+}
+.text3{
+	border:2px solid black;
+}
+.text4{
+	border:0px;
+	padding:10px;
+	font-size:1px;
+}
