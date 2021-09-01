@@ -1,0 +1,61 @@
+<html>
+	<head>		<script src="LogicalFunctions.js"></script>
+		<style>
+			#display{
+				width:100%;
+				height:100%;
+			}
+			table{
+				width:50%;
+				height:40%;
+				margin-top:100px;
+				margin-left:100px;
+			}
+			button{
+				margin:0px;
+				width:100%;
+				padding:0px;
+				height:100%;
+			}
+			td{
+				width:25%;
+				margin:0px;
+			}
+			h1{
+				margin-left:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>My Calculator</h1>
+		<table border="1" cellspacing="0">
+			<tr>
+				<td colspan="4"><input type="text" id="display"</td>
+			</tr>
+			<tr>
+				<td><button onclick="Q19('7')" value="7">7</button></td>
+				<td><button onclick="Q19('8')" value="8">8</button></td>
+				<td><button onclick="Q19('9')" value="9">9</button></td>
+				<td><button onclick="Q19('-')" value="-">-</button></td>
+			</tr>
+			<tr>
+				<td><button onclick="Q19('4')" value="4">4</button></td>
+				<td><button onclick="Q19('5')" value="5">5</button></td>
+				<td><button onclick="Q19('6')" value="6">6</button></td>
+				<td><button onclick="Q19('*')" value="*">*</button></td>
+			</tr>
+			<tr>
+				<td><button onclick="Q19('1')" value="1">1</button></td>
+				<td><button onclick="Q19('2')" value="2">2</button></td>
+				<td><button onclick="Q19('3')" value="3">3</button></td>
+				<td><button onclick="Q19('/')" value="/">/</button></td>
+			</tr>
+			<tr>
+				<td><button onclick="Q19('0')" value="0">0</button></td>
+				<td><button onclick="Q19('Clear')" value="Clear">Clear</button></td>
+				<td><button onclick="Q19('+')" value="+">+</button></td>
+				<td><button onclick="Q19('=')" value="=">=</button></td>
+			</tr>
+		</table>
+		</body>
+</html>

@@ -1,0 +1,148 @@
+<html>
+	<head>
+		<style>
+			form{
+			float:center;
+			border:2px solid black;
+			padding:25px;
+			width:70%;
+			}
+		</style>
+		<script>
+			function NameHint(){
+				document.getElementById("helpText").value="Enter your name in Name field";
+			}
+			function emailHint(){
+				document.getElementById("helpText").value="Enter your emailid in Email field";
+			}
+			function TipHint(){
+				document.getElementById("helpText").value="Select the tip";
+			}
+			function AddressHint(){
+				document.getElementById("helpText").value="Enter the address";
+			}
+			function clearAll(){
+				window.location.href="Q20.html";
+			}
+			function checkFields(){
+				if(document.getElementById("name").value==""){
+					alert("name");
+					return false;
+				}
+				if(document.getElementById("email").value==""){
+					alert("email");
+					return false;
+				}
+				if(document.getElementById("delivery").checked==false &&
+				   document.getElementById("pickup").checked==false ){
+					alert("delivery");
+					return false;
+				}
+				if(document.getElementById("tip").value==""){
+					alert("tip");
+					return false;
+				}
+				if(document.getElementById("address").value=="			"){
+					alert("address");
+					return false;
+				}
+				if(document.getElementById("topping1").checked==false &&
+				   document.getElementById("topping2").checked==false &&
+				   document.getElementById("topping3").checked==false &&
+				   document.getElementById("topping4").checked==false &&
+				   document.getElementById("topping5").checked==false &&
+				   document.getElementById("topping6").checked==false &&
+				   document.getElementById("topping7").checked==false ){
+					alert("toppings");
+					return false;
+				}
+				return true;
+			}
+			function placeOrder(){
+				if(checkFields()){
+					document.getElementById("summary").style.display="block";
+				}
+				else{
+					alert("There are missing values");
+				}
+			}
+			function help(){
+				document.getElementById("helpText").value="Enter your name and email. Select the toppings, delivery type and tip amount. Enter the address. To Place your order please click on submit button. To clear click on reset button.";
+			}
+			function Summary(){
+				var toppings=0;
+				if(document.getElementById("topping1").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping2").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping3").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping4").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping5").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping6").checked==true){
+				toppings+=1;
+				}
+				if(document.getElementById("topping7").checked==true){
+				toppings+=1;
+				}
+				var delivery=0,deliverytype="Pickup";
+				if(document.getElementById("delivery").checked==true){
+					delivery=5;
+					deliverytype="Delivery";
+				}
+				var tip=(document.getElementById("tip").value/100);
+				var price=((10+(1.5*toppings)+delivery)*(1.0+tip));
+				var text="<table><tr><td>Customer Name:</td><td>";
+				text+=document.getElementById("name").value+"</td></tr><tr><td>Customer Email:</td><td>"
+					+document.getElementById("email").value+"</td></tr><tr><td>Customer Address:</td><td>"
+					+document.getElementById("address").value+"</td></tr><tr><td>Toppings Selected:</td><td>"
+					+toppings+"</td></tr><tr><td>Delivery Option:</td><td>"
+					+deliverytype+"</td></tr><tr><td>Total Price:</td><td>"
+					+price+"</td></tr></table>";
+				document.getElementById("demo").innerHTML=text;
+			}
+		</script>
+	</head>
+	<body onload="help()">
+		<form>
+		<label>Name:</label><input type="text" id="name" onfocus="NameHint()"><br><br>
+		<label>Email:</label><input type="email" id="email" onfocus="emailHint()"><br><br>
+		<label>Toppings:</label>
+		<br>Extra Cheese<input type="checkbox" id="topping1" name="topping1" value="cheese">
+		Pepperoni<input type="checkbox" id="topping2" name="topping2" value="pepperoni">
+		Olives<input type="checkbox" id="topping3" name="topping3" value="olives">
+		Pepper<input type="checkbox" id="topping4" name="topping4" value="pepper">
+		Bacon<input type="checkbox" id="topping5" name="topping5" value="bacon">
+		Tomatoes<input type="checkbox" id="topping6" name="topping6" value="tomatoes">
+		Mushrooms<input type="checkbox" id="topping7" name="topping7" value="mushrooms">
+		<br><br><label>How do you want to get your pizza! </label>
+				Delivery<input type="radio" name="deliveryType" id="delivery" value="delivery">
+				Pickup<input type="radio" name="deliveryType" id="pickup" value="pickup"><br>
+		<br><label>Tip? </label>
+			<select id="tip" onfocus="TipHint()">
+				<option value="15">15%</option>
+				<option value="20">20%</option>
+				<option value="25">25%</option>
+			</select>
+			<br><hr><br>
+		<label>Address:</label>
+			<textarea id="address" onfocus="AddressHint()" height="100" width="150">
+			</textarea>
+		<br><br>
+		<label>Help Text:</label>
+			<textarea id="helpText" rows="5" cols="50">
+			</textarea>
+		<br><br><input type="button" value="Submit" onclick="placeOrder()">
+		<input type="button" value="Reset" onclick="clearAll()"><br><br>
+		<input type="button" id="summary" style="display:none;" value="Show Summary" onclick="Summary()">
+		</form>
+		<p id="demo"></p>
+	</body>
+</html>
